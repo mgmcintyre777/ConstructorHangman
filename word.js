@@ -1,31 +1,29 @@
-var wordlist = ["Chicken", "Mongoose", "Jellyfish", "Squirrel", "Porcupine", "Alligator", "Pelican", "Beaver"];
+var Letter = require('./Letter');
 
-var Word = function(word) {
-	this.letters = word
+var Word = function(wordString) {
+	this.wordString = wordString;
+	this.letters = wordString
 		.split("")
-		.map(char => new Letter(char, '*'));
+		.map(char => new Letter(char));
 }
 
-Word.prototype.display = function(guessedLetters) {
+Word.prototype.display = function(guessedChars) {
 	return this.letters
 		.map(letter => {
-			guessedLetters.indexOf(letter) > -1 ?
-			letter.display(true):
-			letter.display(false);
-			})
-		.join();
+			return letter.display(guessedChars.includes(letter.char));
+		}).join('');
 }
 
-var Letter = function(char, blank) {
-	this.char = char;
-	this.blank = blank;
+Word.prototype.isWordGuessed = function(guessedChars) {
+	return this.letters.every(letter => 		
+		guessedChars.includes(letter.char)	
+	);
 }
 
-Letter.prototype.display = function(isGuessed) {
-	return isGuessed ?
-		this.char:
-		this.blank;
+Word.prototype.containsChar = function(char) {
+	return this.letters.some(letter =>
+		letter.char === char
+	);
 }
 
-var word = new Word(wordlist[Math.floor(wordlist.length * Math.random())]);
-console.log(word.display(['a', 'e', 'i', 'o', 'u']));
+module.exports = Word;

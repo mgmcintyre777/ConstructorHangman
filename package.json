@@ -1,0 +1,27 @@
+{
+  "name": "hangman",
+  "version": "1.0.0",
+  "description": "Hangman game in Node.js",
+  "main": "CLI.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mgmcintyre777/ConstructorHangman.git"
+  },
+  "keywords": [
+    "hangman"
+  ],
+  "author": "Matt McIntyre",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mgmcintyre777/ConstructorHangman/issues"
+  },
+  "homepage": "https://github.com/mgmcintyre777/ConstructorHangman#readme",
+  "dependencies": {
+    "chalk": "^2.3.0",
+    "clear": "0.0.1",
+    "inquirer": "^4.0.0"
+  }
+}
